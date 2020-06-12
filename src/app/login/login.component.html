@@ -1,0 +1,30 @@
+<form #f="ngForm" (ngSubmit)="submit(f)">
+<div class="sidenav">
+   <img class="companyLogo" src="assets/img/companyLogo.jpg" alt="Company Logo"/>
+    <div class="login-main-text">
+       <h2>Customer Application</h2>
+       <p>Login or register from here to access.</p>
+    </div>
+ </div>
+ <div class="main">
+    <div class="col-md-6 col-sm-12">
+       <div class="login-form">
+             <div class="form-group">
+                <label for="userName">User Name</label>
+                <input ngModel  name = "userName" #userName="ngModel" type="text" class="form-control" placeholder="User Name" id="userName"
+                required>
+               <div class="alert alert-danger" *ngIf="userName.touched && !userName.valid">User Name is required</div>
+             </div>
+             <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" placeholder="Password" id="password"
+                ngModel name="password" #password="ngModel" required>
+                <div class="alert alert-danger" *ngIf="password.touched && !password.valid">Password is required</div>
+             </div>
+             <div class="alert alert-danger" *ngIf="validationError && validationError.length >0 ">{{validationError}}</div>
+             <div class="alert alert-success" *ngIf="success && success.length >0 ">{{success}}</div>
+             <button type="submit" class="btn btn-black" [disabled]="!f.valid">Login</button>
+       </div>
+    </div>
+ </div>
+</form>
